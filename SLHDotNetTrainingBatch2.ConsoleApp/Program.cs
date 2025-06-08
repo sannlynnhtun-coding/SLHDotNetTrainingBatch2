@@ -1,4 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Microsoft.Data.SqlClient;
+using SLHDotNetTrainingBatch2.ConsoleApp;
+using System.Data;
+
 Console.WriteLine("Hello, World!");
 
+AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//adoDotNetExample.Read();
+adoDotNetExample.Edit();
+//adoDotNetExample.Create();
+
+// 101 connection timeout 3 mins
+
 Console.ReadKey();
+
+// ADO.NET
+// Dapper
+// EF Core
