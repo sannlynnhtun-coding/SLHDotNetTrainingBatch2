@@ -28,6 +28,8 @@ namespace SLHDotNetTrainingBatch2.ConsoleApp
 
             connection.Close();
 
+            List<BlogDto> lst = new List<BlogDto>();
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow row = dt.Rows[i];
@@ -36,6 +38,20 @@ namespace SLHDotNetTrainingBatch2.ConsoleApp
                 Console.WriteLine("BlogTitle => " + row["BlogTitle"]);
                 Console.WriteLine("BlogAuthor => " + row["BlogAuthor"]);
                 Console.WriteLine("BlogContent => " + row["BlogContent"]);
+                BlogDto blog = new BlogDto();
+                blog.BlogId = Convert.ToInt32(row["BlogId"]);
+                blog.BlogTitle = Convert.ToString(row["BlogTitle"])!;
+                blog.BlogAuthor = Convert.ToString(row["BlogAuthor"])!;
+                blog.BlogContent = Convert.ToString(row["BlogContent"])!;
+                lst.Add(blog);
+            }
+
+            foreach (var item in lst)
+            {
+                Console.WriteLine("BlogId => " + item.BlogId);
+                Console.WriteLine("BlogTitle => " + item.BlogTitle);
+                Console.WriteLine("BlogAuthor => " + item.BlogAuthor);
+                Console.WriteLine("BlogContent => " + item.BlogContent);
             }
         }
 
