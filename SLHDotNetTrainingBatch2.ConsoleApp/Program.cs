@@ -11,10 +11,17 @@ Console.WriteLine("Hello, World!");
 
 // 101 connection timeout 3 mins
 
-DapperExample dapperExample = new DapperExample();
-//dapperExample.Read();
-//dapperExample.Edit();
-dapperExample.Create();
+//DapperExample dapperExample = new DapperExample();
+////dapperExample.Read();
+////dapperExample.Edit();
+//dapperExample.Create();
+
+EFCoreExample eFCoreExample = new EFCoreExample();
+//eFCoreExample.Read();
+//eFCoreExample.Edit();
+//eFCoreExample.Create();
+eFCoreExample.Update();
+eFCoreExample.Delete();
 
 Console.ReadKey();
 
