@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.ConsoleApp", "SLHDotNetTrainingBatch2.ConsoleApp\SLHDotNetTrainingBatch2.ConsoleApp.csproj", "{F2FBB08D-D564-4326-92FF-3E89F8AA5211}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.Database", "SLHDotNetTrainingBatch2.Database\SLHDotNetTrainingBatch2.Database.csproj", "{1841A593-FC83-45EF-9226-498489F016E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.MiniPosConsoleApp", "SLHDotNetTrainingBatch2.MiniPosConsoleApp\SLHDotNetTrainingBatch2.MiniPosConsoleApp.csproj", "{E35074AD-DE23-4412-8152-10C7C2851A6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F2FBB08D-D564-4326-92FF-3E89F8AA5211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FBB08D-D564-4326-92FF-3E89F8AA5211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FBB08D-D564-4326-92FF-3E89F8AA5211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1841A593-FC83-45EF-9226-498489F016E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1841A593-FC83-45EF-9226-498489F016E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1841A593-FC83-45EF-9226-498489F016E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1841A593-FC83-45EF-9226-498489F016E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

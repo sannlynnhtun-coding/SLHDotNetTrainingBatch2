@@ -1,7 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
 using SLHDotNetTrainingBatch2.ConsoleApp;
+using SLHDotNetTrainingBatch2.Database;
+using SLHDotNetTrainingBatch2.Database.App2DbContextModels;
 using System.Data;
-
 Console.WriteLine("Hello, World!");
 
 //AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
@@ -22,6 +23,12 @@ EFCoreExample eFCoreExample = new EFCoreExample();
 //eFCoreExample.Create();
 eFCoreExample.Update();
 eFCoreExample.Delete();
+
+//Class1 class1 = new Class1();
+//int result = class1.Method(1, 2);
+
+App2DbContext db = new App2DbContext();
+db.TblBlogs.ToList();
 
 Console.ReadKey();
 
