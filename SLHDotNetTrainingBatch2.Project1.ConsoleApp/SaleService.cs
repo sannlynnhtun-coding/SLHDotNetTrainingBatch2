@@ -73,5 +73,10 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
             var result = db.SaveChanges();
             Console.WriteLine(result > 0 ? "Create Succeed" : "Create failed");
         }
+
+        public void Execute()
+        {
+
+        }
     }
 }
