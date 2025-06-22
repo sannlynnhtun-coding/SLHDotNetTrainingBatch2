@@ -82,5 +82,78 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
                 Console.WriteLine("Invalid input. Please enter a valid integer.");
             }
         }
+
+        public void Execute()
+        {
+          Result:
+            Console.WriteLine("Sale Detail Service");
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("1. New Sale Detail");
+            Console.WriteLine("2. Sale Detail List");
+            Console.WriteLine("3. Show All Sale Detail");
+            Console.WriteLine("4. Exit");
+            Console.WriteLine("------------------------------");
+
+            Console.Write("Choose Sale Detail : ");
+            string result = Console.ReadLine()!;
+            bool isInt = int.TryParse(result, out int no);
+            if (!isInt)
+            {
+                Console.WriteLine("Invalid Product Menu. Please choose 1 to 4.");
+                goto Result;
+            }
+
+            Console.WriteLine("------------------------------");
+
+            SaleDetailEnum saleDetail = (SaleDetailEnum)no;
+            switch (saleDetail)
+            {
+                case SaleDetailEnum.NewSaleDetail:
+                    Console.WriteLine("This menu is New Sale Detail.");
+                    Console.WriteLine("------------------------------");
+                    Create();
+                    Console.WriteLine("------------------------------");
+                    goto Result;
+
+                case SaleDetailEnum.SaleDetailList:
+                    Console.WriteLine("This menu is Sale Detail List.");
+                    Console.WriteLine("------------------------------");
+                    Edit();
+                    Console.WriteLine("------------------------------");
+                    goto Result;
+
+                case SaleDetailEnum.AllSaleDetail:
+                    Console.WriteLine("This menu is All Sale Detail.");
+                    Console.WriteLine("------------------------------");
+                    Read();
+                    Console.WriteLine("------------------------------");
+                    goto Result;
+
+                case SaleDetailEnum.Exit:
+                    goto End;
+
+                case SaleDetailEnum.None:
+                    Console.WriteLine("Invalid Product Menu. Please choose 1 to 5.");
+                    goto Result;
+
+                default:
+                    break;
+            }
+            Console.WriteLine("------------------------------");
+            goto Result;
+
+        End:
+            Console.WriteLine("Existing Sale Detail...");
+        }
+
+    }
+
+    public enum SaleDetailEnum
+    {
+        None,
+        NewSaleDetail,
+        SaleDetailList,
+        AllSaleDetail,
+        Exit
     }
 }
