@@ -9,6 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.MiniPosConsoleApp", "SLHDotNetTrainingBatch2.MiniPosConsoleApp\SLHDotNetTrainingBatch2.MiniPosConsoleApp.csproj", "{E35074AD-DE23-4412-8152-10C7C2851A6C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project1", "Project1", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{9260487F-B780-42C2-9730-8E899ACD7B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.Project1.ConsoleApp", "SLHDotNetTrainingBatch2.Project1.ConsoleApp\SLHDotNetTrainingBatch2.Project1.ConsoleApp.csproj", "{189E4226-7FF2-4279-A222-D6140B7170D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.Project1.Database", "SLHDotNetTrainingBatch2.Project1.Database\SLHDotNetTrainingBatch2.Project1.Database.csproj", "{11DFBF72-8855-4A33-8714-053117159F30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +40,24 @@ Global
 		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E35074AD-DE23-4412-8152-10C7C2851A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{189E4226-7FF2-4279-A222-D6140B7170D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{189E4226-7FF2-4279-A222-D6140B7170D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{189E4226-7FF2-4279-A222-D6140B7170D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{189E4226-7FF2-4279-A222-D6140B7170D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DFBF72-8855-4A33-8714-053117159F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DFBF72-8855-4A33-8714-053117159F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DFBF72-8855-4A33-8714-053117159F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DFBF72-8855-4A33-8714-053117159F30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2FBB08D-D564-4326-92FF-3E89F8AA5211} = {9260487F-B780-42C2-9730-8E899ACD7B78}
+		{1841A593-FC83-45EF-9226-498489F016E5} = {9260487F-B780-42C2-9730-8E899ACD7B78}
+		{E35074AD-DE23-4412-8152-10C7C2851A6C} = {9260487F-B780-42C2-9730-8E899ACD7B78}
+		{189E4226-7FF2-4279-A222-D6140B7170D7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{11DFBF72-8855-4A33-8714-053117159F30} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9508242-2B1D-4D52-B6C6-CB6FC181933A}
