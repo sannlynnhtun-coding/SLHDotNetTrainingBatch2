@@ -76,7 +76,67 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
 
         public void Execute()
         {
+        Result:
+            Console.WriteLine("\nSale Service Menu");
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("1. New Sale Summary");
+            Console.WriteLine("2. List Sales");
+            Console.WriteLine("3. Edit Sale Summary");
+            Console.WriteLine("4. Exit");
+            Console.WriteLine("------------------------------");
 
+            Console.Write("\nChoose Menu : ");
+            bool isInt = int.TryParse(Console.ReadLine(), out int no);
+            if (!isInt)
+            {
+                Console.WriteLine("Invalid Product Menu. Please choose 1 to 4.");
+            }
+            EnumSalesMenu menu = (EnumSalesMenu)no;
+            switch (menu)
+            {
+                case EnumSalesMenu.NewSale:
+                    Console.WriteLine("\nCreate a new sale summary");
+                    Console.WriteLine("------------------------------");
+                    Console.WriteLine();
+                    Create();
+                    Console.WriteLine("------------------------------");
+                    break;
+                case EnumSalesMenu.ListSale:
+                    Console.WriteLine("\nObtaining a list of sales");
+                    Console.WriteLine("------------------------------");
+                    Console.WriteLine();
+                    Read();
+                    Console.WriteLine("------------------------------");
+                    break;
+                case EnumSalesMenu.EditSale:
+                    Console.WriteLine("\nView a sale summary");
+                    Console.WriteLine("------------------------------");
+                    Console.WriteLine();
+                    Edit();
+                    Console.WriteLine("------------------------------");
+                    break;
+                case EnumSalesMenu.Exit:
+                    goto End;
+                case EnumSalesMenu.None:
+                default:
+                    Console.WriteLine("Invalid Product Menu. Please choose 1 to 4.");
+                    goto Result;
+            }
+            Console.WriteLine("------------------------------");
+            goto Result;
+
+        End:
+            Console.WriteLine("\nExiting Sale Service Menu\n");
+
+        }
+
+        public enum EnumSalesMenu
+        {
+            None,
+            NewSale,
+            ListSale,
+            EditSale,
+            Exit
         }
     }
 }
