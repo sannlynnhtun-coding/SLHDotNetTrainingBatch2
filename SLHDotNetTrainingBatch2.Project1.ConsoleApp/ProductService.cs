@@ -170,12 +170,18 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
                     break;
                 case EnumProductMenu.ProductList:
                     Console.WriteLine("this menu is ProductList.");
+                    Read();
+                    Console.WriteLine("------------------------------");
                     break;
                 case EnumProductMenu.EditProdut:
                     Console.WriteLine("this menu is EditProdut.");
+                    Update();
+                    Console.WriteLine("------------------------------");
                     break;
                 case EnumProductMenu.DeleteProduct:
                     Console.WriteLine("this menu is DeleteProduct.");
+                    Delete();
+                    Console.WriteLine("------------------------------");
                     break;
                 case EnumProductMenu.Exit:
                     goto End;
