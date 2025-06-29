@@ -1,4 +1,5 @@
 ﻿using SLHDotNetTrainingBatch2.Project1.Database.AppDbContextModels;
+using SLHDotNetTrainingBatch2.Project1.Domain.Features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
 {
-    public class ProductService
+    public class ProductUI
     {
         public void Read()
         {
-            AppDbContext db = new AppDbContext();
-            var lst = db.TblProducts.Where(x => x.DeleteFlag == false).ToList();
+            //AppDbContext db = new AppDbContext();
+            //var lst = db.TblProducts.Where(x => x.DeleteFlag == false).ToList();
+            ProductService productService = new ProductService();
+            var lst = productService.GetProducts();
             foreach (var item in lst)
             {
-                Console.Write("ProductID => " + item.ProductId);
-                Console.Write("Product Name => " + item.PName);
-                Console.Write("Price => " + item.Price);
-                Console.Write("Create at => " + item.Createat);
+                Console.WriteLine("ProductID => " + item.ProductId);
+                Console.WriteLine("Product Name => " + item.PName);
+                Console.WriteLine("Price => " + item.Price);
+                Console.WriteLine("Create at => " + item.Createat);
+                Console.WriteLine("-------------------------------");
             }
         }
 
@@ -32,8 +36,10 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
             {
                 goto FirstPage;
             }
-            AppDbContext db = new AppDbContext();
-            var item = db.TblProducts.Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.ProductId == id);
+
+            ProductService productService = new ProductService();
+            var item = productService.FindProduct(id);
+
             if (item is null) return;
             Console.WriteLine("ProductID => " + item.ProductId);
             Console.WriteLine("Product Name => " + item.PName);
@@ -53,34 +59,33 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
             {
                 goto PriceInput;
             }
-        DateInput:
-            Console.Write("Enter Date(e.g., 2025-06-22 or MM/dd/yyyy): ");
-            var dateInput = Console.ReadLine()!;
-            bool isDateTime = DateTime.TryParse(dateInput, out DateTime createdAt);
-            if (!isDateTime)
-            {
-                goto DateInput;
-            }
-            var product = new TblProduct
-            {
-                PName = name,
-                Price = price,
-                Createat = createdAt
-            };
 
-            AppDbContext db = new AppDbContext();
-            db.TblProducts.Add(product);
-            var result = db.SaveChanges();
+            ProductService productService = new ProductService();
+            int result = productService.CreatProduct(name, price);
+
             Console.WriteLine(result > 0 ? "Create Succeed" : "Create failed");
         }
 
         public void Update()
         {
-        IntInput:
+        ProductIdInput:
             Console.WriteLine("Enter ProductID : ");
             var idInput = Console.ReadLine()!;
             bool isInt = int.TryParse(idInput, out int id);
-            if (!isInt) goto IntInput;
+            if (!isInt) goto ProductIdInput;
+
+            ProductService productService = new ProductService();
+            var item = productService.FindProduct(id);
+            if (item is null)
+            {
+                Console.WriteLine("No data found.");
+                goto ProductIdInput;
+            }
+
+            Console.WriteLine(item.PName);
+            Console.WriteLine(item.Price);
+            Console.WriteLine(item.Createat);
+
             Console.Write("Enter Product Name: ");
             string name = Console.ReadLine()!;
         PriceInput:
@@ -99,42 +104,43 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
             {
                 goto DateInput;
             }
-            var exist = IsExist(id);
-            if (!exist) return;
-            AppDbContext db = new AppDbContext();
-            var item = db.TblProducts.Where(x => x.DeleteFlag == false).FirstOrDefault(x => x.ProductId == id);
-            if (item is null) return;
-            item.PName = name;
-            item.Price = price;
-            item.Createat = createdAt;
-            var result = db.SaveChanges();
+
+            int result = productService.UpdateProduct(id, name, price);
+            if (result == -1)
+            {
+                Console.WriteLine("No data found.");
+                goto ProductIdInput;
+            }
+
             Console.WriteLine(result > 0 ? "Update Success" : "Update Failed");
         }
 
         public void Delete()
         {
-        FirstPage:
+        ProductIdInput:
             Console.WriteLine("Enter ProductID : ");
             var input = Console.ReadLine();
             bool isInt = int.TryParse(input, out int id);
             if (!isInt)
             {
-                goto FirstPage;
+                goto ProductIdInput;
             }
-            var exit = IsExist(id);
-            if (!exit) return;
-            AppDbContext db = new AppDbContext();
-            var item = db.TblProducts.First(x => x.ProductId == id);
-            item.DeleteFlag = true;
-            var result = db.SaveChanges();
-            Console.WriteLine(result > 0 ? "Delete Success" : "Delete Failed");
-        }
 
-        private bool IsExist(int id)
-        {
-            AppDbContext db = new AppDbContext();
-            var item = db.TblProducts.FirstOrDefault(x => x.ProductId == id);
-            return item != null;
+            ProductService productService = new ProductService();
+            var item = productService.FindProduct(id);
+            if (item is null)
+            {
+                Console.WriteLine("No data found.");
+                goto ProductIdInput;
+            }
+
+            int result = productService.DeleteProduct(id);
+            if (result == -1)
+            {
+                Console.WriteLine("No data found.");
+                goto ProductIdInput;
+            }
+            Console.WriteLine(result > 0 ? "Delete Success" : "Delete Failed");
         }
 
         public void Execute()
@@ -190,7 +196,7 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
                     Console.WriteLine("Invalid Product Menu. Please choose 1 to 5.");
                     goto Result;
             }
-            Console.WriteLine("------------------------------"); 
+            Console.WriteLine("------------------------------");
             goto Result;
 
         End:

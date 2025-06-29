@@ -1,20 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="SaleDetailService.cs" />
-    <Compile Remove="SaleService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SLHDotNetTrainingBatch2.Project1.Database\SLHDotNetTrainingBatch2.Project1.Database.csproj" />
-    <ProjectReference Include="..\SLHDotNetTrainingBatch2.Project1.Domain\SLHDotNetTrainingBatch2.Project1.Domain.csproj" />
   </ItemGroup>
 
 </Project>
