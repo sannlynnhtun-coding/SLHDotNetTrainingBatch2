@@ -13,7 +13,7 @@ namespace SLHDotNetTrainingBatch2.Project1.Domain.Features
         {
             AppDbContext db = new AppDbContext();
             var item = db.TblProducts.FirstOrDefault(x => x.ProductId == id);
-            return item;
+            return item!;
         }
 
         public int Sale(List<TblSaleDetail> products)
