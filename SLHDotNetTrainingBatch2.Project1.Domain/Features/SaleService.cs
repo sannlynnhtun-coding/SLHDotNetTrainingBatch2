@@ -15,6 +15,22 @@ namespace SLHDotNetTrainingBatch2.Project1.Domain.Features
             var item = db.TblProducts.FirstOrDefault(x => x.ProductId == id);
             return item!;
         }
+        
+        public TblSale? FindSale(int id)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.TblSales.FirstOrDefault(s => s.SaleId == id);
+            return item;
+        }
+        
+        public List<TblSaleDetail> GetSaleDetails(int saleId)
+        {
+            using AppDbContext db = new AppDbContext();
+            var saleDetailLst = db.TblSaleDetails
+                .Where(x => x.SaleId == saleId)
+                .ToList();
+            return saleDetailLst;
+        }
 
         public int Sale(List<TblSaleDetail> products)
         {
