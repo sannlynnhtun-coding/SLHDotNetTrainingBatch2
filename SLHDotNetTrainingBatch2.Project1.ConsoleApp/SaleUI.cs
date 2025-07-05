@@ -12,7 +12,7 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
     {
         public void Execute()
         {
-        Result:
+            Result:
             Console.WriteLine("Sale Menu");
             Console.WriteLine("------------------------------");
             Console.WriteLine("1. New Sale");
@@ -40,6 +40,7 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
                 case EnumSaleMenu.SaleList:
                     break;
                 case EnumSaleMenu.SaleDetail:
+                    SaleDetail();
                     break;
                 case EnumSaleMenu.Exit:
                     break;
@@ -48,10 +49,11 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
                     Console.WriteLine("Invalid Sale Menu. Please choose 1 to 4.");
                     goto Result;
             }
+
             Console.WriteLine("------------------------------");
             goto Result;
 
-        End:
+            End:
             Console.WriteLine("Exiting Product Menu...");
         }
 
@@ -61,7 +63,7 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
 
             List<TblSaleDetail> products = new List<TblSaleDetail>();
 
-        FirstPage:
+            FirstPage:
 
             #region Prepare Product
 
@@ -100,6 +102,69 @@ namespace SLHDotNetTrainingBatch2.Project1.ConsoleApp
             int result = saleService.Sale(products);
             Console.WriteLine(result > 0 ? "Sale Processing Success." : "Failed.");
             Console.WriteLine("--------------------------------------------------");
+
+            #endregion
+        }
+
+        public void SaleDetail()
+        {
+            SaleService saleService = new SaleService();
+
+            #region Sale ID Input & Validation
+
+            FirstPage:
+
+            Console.Write("Please enter sale id to view detail : ");
+            int saleId = Convert.ToInt32(Console.ReadLine());
+
+            var sale = saleService.FindSale(saleId);
+            if (sale == null)
+            {
+                Console.Write("Sale not found! Do you want to find another sale? Y/N : ");
+                string result = Console.ReadLine();
+                if (result == "Y")
+                {
+                    goto FirstPage;
+                }
+
+                return;
+            }
+
+            #endregion
+
+            #region Sale Header Display
+
+            List<TblSaleDetail> saleDetailLst = saleService.GetSaleDetails(saleId);
+
+            Console.WriteLine("Sale Details");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine($"Sale ID: {sale.SaleId}");
+            Console.WriteLine($"Voucher No: {sale.VoucherNo}");
+            Console.WriteLine($"Date: {sale.SaleDate?.ToString("yyyy-MM-dd")}");
+            Console.WriteLine($"Total Amount: {sale.TotalAmount:N2}");
+            Console.WriteLine("--------------------------------------------------");
+
+            #endregion
+
+            #region Sale Items Display
+
+            Console.WriteLine("Products:");
+            Console.WriteLine("--------------------------------------------------");
+
+            foreach (var detail in saleDetailLst)
+            {
+                var product = saleService.FindProduct(detail.ProductId);
+                decimal subtotal = detail.Quantity * detail.Price;
+
+                Console.WriteLine($"Product Id : {detail.ProductId}");
+                Console.WriteLine($"Product Name : {product.PName}");
+                Console.WriteLine($"Product Quantity : {detail.Quantity}");
+                Console.WriteLine($"Product Price : {detail.Price:N2}");
+                Console.WriteLine($"Subtotal : {subtotal:N2}");
+                Console.WriteLine("--------------------------------------------------");
+            }
+
+            Console.WriteLine("End of sale details.");
 
             #endregion
         }
