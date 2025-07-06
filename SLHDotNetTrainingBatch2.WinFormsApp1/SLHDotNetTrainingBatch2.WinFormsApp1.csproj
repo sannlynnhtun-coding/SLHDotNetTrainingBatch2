@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.13.0" />
+    <PackageReference Include="MimeKit" Version="4.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SLHDotNetTrainingBatch2.WinFormsApp1.Database\SLHDotNetTrainingBatch2.WinFormsApp1.Database.csproj" />
   </ItemGroup>
 

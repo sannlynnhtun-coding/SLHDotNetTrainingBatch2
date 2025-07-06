@@ -52,9 +52,10 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(181, 355);
+            btnSave.Location = new Point(158, 266);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(82, 22);
             btnSave.TabIndex = 0;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -63,89 +64,95 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 34);
+            label1.Location = new Point(21, 26);
             label1.Name = "label1";
-            label1.Size = new Size(86, 20);
+            label1.Size = new Size(68, 15);
             label1.TabIndex = 1;
             label1.Text = "Staff Code: ";
             // 
             // txtCode
             // 
-            txtCode.Location = new Point(24, 57);
+            txtCode.Location = new Point(21, 43);
+            txtCode.Margin = new Padding(3, 2, 3, 2);
             txtCode.Name = "txtCode";
-            txtCode.Size = new Size(251, 27);
+            txtCode.Size = new Size(220, 23);
             txtCode.TabIndex = 2;
             // 
             // txtName
             // 
-            txtName.Location = new Point(24, 110);
+            txtName.Location = new Point(21, 82);
+            txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(251, 27);
+            txtName.Size = new Size(220, 23);
             txtName.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(24, 87);
+            label2.Location = new Point(21, 65);
             label2.Name = "label2";
-            label2.Size = new Size(87, 20);
+            label2.Size = new Size(69, 15);
             label2.TabIndex = 3;
             label2.Text = "Staff Name:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(24, 163);
+            txtEmail.Location = new Point(21, 122);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(251, 27);
+            txtEmail.Size = new Size(220, 23);
             txtEmail.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(24, 140);
+            label3.Location = new Point(21, 105);
             label3.Name = "label3";
-            label3.Size = new Size(49, 20);
+            label3.Size = new Size(39, 15);
             label3.TabIndex = 5;
             label3.Text = "Email:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(24, 216);
+            txtPassword.Location = new Point(21, 162);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(251, 27);
+            txtPassword.ReadOnly = true;
+            txtPassword.Size = new Size(220, 23);
             txtPassword.TabIndex = 8;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(24, 193);
+            label4.Location = new Point(21, 145);
             label4.Name = "label4";
-            label4.Size = new Size(73, 20);
+            label4.Size = new Size(60, 15);
             label4.TabIndex = 7;
             label4.Text = "Password:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(24, 246);
+            label5.Location = new Point(21, 184);
             label5.Name = "label5";
-            label5.Size = new Size(64, 20);
+            label5.Size = new Size(53, 15);
             label5.TabIndex = 9;
             label5.Text = "Position:";
             // 
             // txtMobileNo
             // 
-            txtMobileNo.Location = new Point(24, 322);
+            txtMobileNo.Location = new Point(21, 242);
+            txtMobileNo.Margin = new Padding(3, 2, 3, 2);
             txtMobileNo.Name = "txtMobileNo";
-            txtMobileNo.Size = new Size(251, 27);
+            txtMobileNo.Size = new Size(220, 23);
             txtMobileNo.TabIndex = 12;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(24, 299);
+            label6.Location = new Point(21, 224);
             label6.Name = "label6";
-            label6.Size = new Size(83, 20);
+            label6.Size = new Size(66, 15);
             label6.TabIndex = 11;
             label6.Text = "Mobile No:";
             // 
@@ -153,9 +160,10 @@
             // 
             cboPosition.FormattingEnabled = true;
             cboPosition.Items.AddRange(new object[] { "--Select One--", "Admin", "Staff" });
-            cboPosition.Location = new Point(24, 269);
+            cboPosition.Location = new Point(21, 202);
+            cboPosition.Margin = new Padding(3, 2, 3, 2);
             cboPosition.Name = "cboPosition";
-            cboPosition.Size = new Size(251, 28);
+            cboPosition.Size = new Size(220, 23);
             cboPosition.TabIndex = 13;
             // 
             // dgvData
@@ -164,11 +172,12 @@
             dgvData.AllowUserToDeleteRows = false;
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvData.Columns.AddRange(new DataGridViewColumn[] { colEdit, colDelete, colId, colStaffCode, colStaffName });
-            dgvData.Location = new Point(325, 25);
+            dgvData.Location = new Point(284, 19);
+            dgvData.Margin = new Padding(3, 2, 3, 2);
             dgvData.Name = "dgvData";
             dgvData.ReadOnly = true;
             dgvData.RowHeadersWidth = 51;
-            dgvData.Size = new Size(495, 359);
+            dgvData.Size = new Size(433, 269);
             dgvData.TabIndex = 14;
             dgvData.CellContentClick += dgvData_CellContentClick;
             // 
@@ -221,9 +230,9 @@
             // 
             // FrmStaff
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(867, 420);
+            ClientSize = new Size(759, 315);
             Controls.Add(dgvData);
             Controls.Add(cboPosition);
             Controls.Add(txtMobileNo);
@@ -238,6 +247,7 @@
             Controls.Add(txtCode);
             Controls.Add(label1);
             Controls.Add(btnSave);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmStaff";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Staff";

@@ -1,5 +1,6 @@
+using MimeKit;
 using SLHDotNetTrainingBatch2.WinFormsApp1.Database.AppDbContextModels;
-using System.Net.Mail;
+using MailKit.Net.Smtp;
 
 namespace SLHDotNetTrainingBatch2.WinFormsApp1
 {
@@ -18,6 +19,8 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
         {
             try
             {
+                txtPassword.Text = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
+
                 _db.TblStaffs.Add(new TblStaff
                 {
                     EmailAddress = txtEmail.Text.Trim(), // " Mg Mg "
@@ -29,8 +32,32 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
                     StaffName = txtName.Text.Trim()
                 });
                 int result = _db.SaveChanges();
-                string message = result > 0 ? "Saving Successful." : "Saving Failed.";
-                MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string messageStr = result > 0 ? "Saving Successful." : "Saving Failed.";
+                MessageBox.Show(messageStr, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Sann Lynn Htun", "sannlynnhtun.ace@gmail.com"));
+                message.To.Add(new MailboxAddress(txtName.Text.Trim(), txtEmail.Text.Trim()));
+                message.Subject = "Mini POS - User Creation";
+
+                string body = $@"Your Staff Code is {txtCode.Text.Trim()}.
+                                Your password is {txtPassword.Text}.";
+
+                message.Body = new TextPart("plain")
+                {
+                    Text = body
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, false);
+
+                    // Note: only needed if the SMTP server requires authentication
+                    client.Authenticate("sannlynnhtun.ace@gmail.com", "kgom bcum apzn sqin"); // email & app password https://myaccount.google.com/apppasswords
+
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
 
                 txtCode.Clear();
                 txtEmail.Clear();
