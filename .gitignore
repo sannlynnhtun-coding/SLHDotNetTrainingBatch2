@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SLHDotNetTrainingBatch2.WinFormsApp1.Database/AppDbContextModels
+/SLHDotNetTrainingBatch2.WinFormsApp1.Database/AppDbContextModels/TblProduct.cs
+/SLHDotNetTrainingBatch2.WinFormsApp1.Database/AppDbContextModels/TblSalesDetail.cs
+/SLHDotNetTrainingBatch2.WinFormsApp1.Database/AppDbContextModels/TblSalesSummary.cs
