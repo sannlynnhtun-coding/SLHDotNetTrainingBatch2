@@ -18,30 +18,63 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
         {
             try
             {
-                _db.TblStaffs.Add(new TblStaff
+                if (_editId == 0)
                 {
-                    EmailAddress = txtEmail.Text.Trim(), // " Mg Mg "
-                    IsDelete = false,
-                    MobileNo = txtMobileNo.Text.Trim(),
-                    Password = txtPassword.Text.Trim(),
-                    Position = cboPosition.Text.Trim(),
-                    StaffCode = txtCode.Text.Trim(),
-                    StaffName = txtName.Text.Trim()
-                });
-                int result = _db.SaveChanges();
-                string message = result > 0 ? "Saving Successful." : "Saving Failed.";
-                MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _db.TblStaffs.Add(new TblStaff
+                    {
+                        EmailAddress = txtEmail.Text.Trim(), // " Mg Mg "
+                        IsDelete = false,
+                        MobileNo = txtMobileNo.Text.Trim(),
+                        Password = txtPassword.Text.Trim(),
+                        Position = cboPosition.Text.Trim(),
+                        StaffCode = txtCode.Text.Trim(),
+                        StaffName = txtName.Text.Trim()
+                    });
+                    int result = _db.SaveChanges();
+                    string message = result > 0 ? "Saving Successful." : "Saving Failed.";
+                    MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                txtCode.Clear();
-                txtEmail.Clear();
-                txtMobileNo.Clear();
-                txtPassword.Clear();
-                cboPosition.Text = "";
-                txtName.Clear();
+                    txtCode.Clear();
+                    txtEmail.Clear();
+                    txtMobileNo.Clear();
+                    txtPassword.Clear();
+                    cboPosition.Text = "";
+                    txtName.Clear();
 
-                txtCode.Focus();
+                    txtCode.Focus();
 
-                BindData();
+                    BindData();
+                } else
+                {
+                    TblStaff? staffData = _db.TblStaffs.FirstOrDefault(x => x.StaffId == _editId && x.IsDelete == false);
+                    if (staffData is null)
+                    {
+                        return;
+                    }
+
+                    staffData.StaffCode = txtCode.Text.Trim();
+                    staffData.StaffName = txtName.Text.Trim();
+                    staffData.EmailAddress = txtEmail.Text.Trim();
+                    staffData.Password = txtPassword.Text.Trim();
+                    staffData.Position = cboPosition.Text.Trim();
+                    staffData.MobileNo = txtMobileNo.Text.Trim();
+                    int result = _db.SaveChanges();
+                    string message = result > 0 ? "Update Successful." : "Update Failed.";
+                    MessageBox.Show(message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtCode.Clear();
+                    txtName.Clear();
+                    txtEmail.Clear();
+                    txtPassword.Clear();
+                    cboPosition.SelectedIndex = -1;
+                    txtMobileNo.Clear();
+                    txtCode.Focus();
+                    _editId = 0;
+                    btnSave.Text = "Save";
+                    txtCode.Focus();
+
+                    BindData();
+                }
             }
             catch (Exception ex)
             {
@@ -87,6 +120,8 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
                 cboPosition.Text = item.Position;
                 txtMobileNo.Text = item.MobileNo;
                 _editId = id;
+
+                btnSave.Text = "Update";
             }
             else if (e.ColumnIndex == dgvData.Columns["colDelete"].Index)
             {
