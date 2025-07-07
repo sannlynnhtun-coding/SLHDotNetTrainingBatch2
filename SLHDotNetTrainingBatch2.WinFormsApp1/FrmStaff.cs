@@ -19,45 +19,47 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
         {
             try
             {
-                txtPassword.Text = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
-
-                _db.TblStaffs.Add(new TblStaff
+                if (btnSave.Text == "Save")
                 {
-                    EmailAddress = txtEmail.Text.Trim(), // " Mg Mg "
-                    IsDelete = false,
-                    MobileNo = txtMobileNo.Text.Trim(),
-                    Password = txtPassword.Text.Trim(),
-                    Position = cboPosition.Text.Trim(),
-                    StaffCode = txtCode.Text.Trim(),
-                    StaffName = txtName.Text.Trim()
-                });
-                int result = _db.SaveChanges();
-                string messageStr = result > 0 ? "Saving Successful." : "Saving Failed.";
-                MessageBox.Show(messageStr, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPassword.Text = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
 
-                var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Sann Lynn Htun", "sannlynnhtun.ace@gmail.com"));
-                message.To.Add(new MailboxAddress(txtName.Text.Trim(), txtEmail.Text.Trim()));
-                message.Subject = "Mini POS - User Creation";
+                    _db.TblStaffs.Add(new TblStaff
+                    {
+                        EmailAddress = txtEmail.Text.Trim(), // " Mg Mg "
+                        IsDelete = false,
+                        MobileNo = txtMobileNo.Text.Trim(),
+                        Password = txtPassword.Text.Trim(),
+                        Position = cboPosition.Text.Trim(),
+                        StaffCode = txtCode.Text.Trim(),
+                        StaffName = txtName.Text.Trim()
+                    });
+                    int result = _db.SaveChanges();
+                    string messageStr = result > 0 ? "Saving Successful." : "Saving Failed.";
+                    MessageBox.Show(messageStr, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                string body = $@"Your Staff Code is {txtCode.Text.Trim()}.
+                    var message = new MimeMessage();
+                    message.From.Add(new MailboxAddress("Sann Lynn Htun", "sannlynnhtun.ace@gmail.com"));
+                    message.To.Add(new MailboxAddress(txtName.Text.Trim(), txtEmail.Text.Trim()));
+                    message.Subject = "Mini POS - User Creation";
+
+                    string body = $@"Your Staff Code is {txtCode.Text.Trim()}.
                                 Your password is {txtPassword.Text}.";
 
-                message.Body = new TextPart("plain")
-                {
-                    Text = body
-                };
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = body
+                    };
 
-                using (var client = new SmtpClient())
-                {
-                    client.Connect("smtp.gmail.com", 587, false);
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);
 
-                    // Note: only needed if the SMTP server requires authentication
-                    client.Authenticate("sannlynnhtun.ace@gmail.com", "kgom bcum apzn sqin"); // email & app password https://myaccount.google.com/apppasswords
+                        // Note: only needed if the SMTP server requires authentication
+                        client.Authenticate("sannlynnhtun.ace@gmail.com", "kgom bcum apzn sqin"); // email & app password https://myaccount.google.com/apppasswords
 
-                    client.Send(message);
-                    client.Disconnect(true);
-                }
+                        client.Send(message);
+                        client.Disconnect(true);
+                    }
 
                     txtCode.Clear();
                     txtEmail.Clear();
@@ -69,7 +71,8 @@ namespace SLHDotNetTrainingBatch2.WinFormsApp1
                     txtCode.Focus();
 
                     BindData();
-                } else
+                }
+                else
                 {
                     TblStaff? staffData = _db.TblStaffs.FirstOrDefault(x => x.StaffId == _editId && x.IsDelete == false);
                     if (staffData is null)
