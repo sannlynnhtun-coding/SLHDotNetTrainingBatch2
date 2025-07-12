@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.Win
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{9EF134C8-3C82-40F1-B576-EFC053E79B0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHDotNetTrainingBatch2.WebApi", "SLHDotNetTrainingBatch2.WebApi\SLHDotNetTrainingBatch2.WebApi.csproj", "{CF099286-CE5F-4577-9723-503F35314519}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{9EF134C8-3C82-40F1-B576-EFC053E79B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF134C8-3C82-40F1-B576-EFC053E79B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EF134C8-3C82-40F1-B576-EFC053E79B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF099286-CE5F-4577-9723-503F35314519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF099286-CE5F-4577-9723-503F35314519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF099286-CE5F-4577-9723-503F35314519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF099286-CE5F-4577-9723-503F35314519}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
