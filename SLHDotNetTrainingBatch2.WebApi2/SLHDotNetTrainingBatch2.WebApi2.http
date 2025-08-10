@@ -1,0 +1,6 @@
+@SLHDotNetTrainingBatch2.WebApi2_HostAddress = http://localhost:5058
+
+GET {{SLHDotNetTrainingBatch2.WebApi2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
